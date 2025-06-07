@@ -63,7 +63,7 @@ flutter:
   assets:
     - assets/abertura.json
     - assets/papaguaio.json
-    - assets/imagem.png
+    - assets/image/imagem.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

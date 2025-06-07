@@ -118,7 +118,7 @@ class _TelaImagemEAnimacaoState extends State<TelaImagemEAnimacao>
                   Container(
                     margin: const EdgeInsets.only(bottom: 20),
                     child: Image.asset(
-                      'assets/imagem.png',
+                      'assets/image/imagem.png',
                       width: 150,
                       fit: BoxFit.contain,
                     ),
@@ -213,42 +213,47 @@ class TelaPrincipal extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       floatingActionButton: Builder(
         // Usar Builder aqui para obter o contexto certo do Scaffold
-        builder: (context) => Container(
-          height: 50,
-          margin: const EdgeInsets.only(top: 5),
-          padding: const EdgeInsets.only(left: 10, right: 5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                // ignore: deprecated_member_use
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 10,
-                spreadRadius: 2,
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.menu, size: 28, color: Colors.black87),
-                onPressed: () => Scaffold.of(context).openDrawer(),
-              ),
-              const SizedBox(width: 5),
-              Expanded(
-                child: Center(
-                  //alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/imagem.png',
-                    height: 50,
-                    fit: BoxFit.contain,
+        builder:
+            (context) => Container(
+              height: 50,
+              margin: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.only(left: 10, right: 5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    // ignore: deprecated_member_use
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    spreadRadius: 2,
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.menu,
+                      size: 28,
+                      color: Colors.black87,
+                    ),
+                    onPressed: () => Scaffold.of(context).openDrawer(),
+                  ),
+                  const SizedBox(width: 5),
+                  Expanded(
+                    child: Center(
+                      //alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/image/imagem.png',
+                        height: 50,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
       ),
 
       // Drawer lateral
