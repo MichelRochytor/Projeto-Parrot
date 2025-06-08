@@ -1,3 +1,8 @@
+// Projeto Parrot v1.0
+// Desenvolvido por: Michel Rochytor
+// Data: 02/04/2025
+
+//Bibliotecas necessárias
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
