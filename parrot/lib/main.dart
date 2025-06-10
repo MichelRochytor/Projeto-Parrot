@@ -147,7 +147,7 @@ class _TelaImagemEAnimacaoState extends State<TelaImagemEAnimacao>
                   Expanded(
                     child: Center(
                       child: Lottie.asset(
-                        'assets/papaguaio.json',
+                        'assets/animation/papaguaio.json',
                         controller: _controladorAnimacao,
                         onLoaded: (composicao) {
                           _controladorAnimacao
