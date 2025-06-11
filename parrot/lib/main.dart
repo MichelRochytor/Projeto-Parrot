@@ -42,6 +42,7 @@ class _TelaAnimacaoState extends State<TelaAnimacao>
 
     controladorAnimacao.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
+        controladorAnimacao.dispose();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const TelaImagemEAnimacao()),
@@ -94,8 +95,7 @@ class _TelaImagemEAnimacaoState extends State<TelaImagemEAnimacao>
     _controladorAnimacao = AnimationController(vsync: this);
 
     _controladorAnimacao.addStatusListener((status) {
-      if (status == AnimationStatus.completed ||
-          _controladorAnimacao.value > 0.89) {
+      if (status == AnimationStatus.completed) {
         _controladorAnimacao.repeat();
       }
     });
