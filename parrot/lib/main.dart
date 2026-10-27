@@ -1,10 +1,11 @@
 // Projeto Parrot v1.0
 // Desenvolvido por: Michel Rochytor
-// Data: 02/04/2025
+// Interface fiel ao documento do projeto (Projeto Parrot)
 
-//Bibliotecas necessárias
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'models/plant_state.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MeuApp());
@@ -18,7 +19,16 @@ class MeuApp extends StatelessWidget {
     return MaterialApp(
       title: 'Projeto Parrot',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        fontFamily: 'fredoka',
+        primaryColor: const Color(0xFF0076DB),
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF0076DB),
+          primary: const Color(0xFF0076DB),
+          secondary: const Color(0xFF06DC34),
+        ),
+      ),
       home: const TelaAnimacao(),
     );
   }
@@ -88,6 +98,7 @@ class TelaImagemEAnimacao extends StatefulWidget {
 class _TelaImagemEAnimacaoState extends State<TelaImagemEAnimacao>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controladorAnimacao;
+  final PlantState _plantState = PlantState();
 
   @override
   void initState() {
@@ -185,14 +196,17 @@ class _TelaImagemEAnimacaoState extends State<TelaImagemEAnimacao>
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const TelaPrincipal(),
+                      builder: (context) => HomeScreen(plantState: _plantState),
                     ),
                   );
                 },
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('Primeiros passos'),
+                    Text(
+                      'Primeiros passos',
+                      style: TextStyle(fontFamily: 'fredoka-bold'),
+                    ),
                     SizedBox(width: 8),
                     Icon(Icons.arrow_forward, size: 18),
                   ],
@@ -200,99 +214,6 @@ class _TelaImagemEAnimacaoState extends State<TelaImagemEAnimacao>
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class TelaPrincipal extends StatelessWidget {
-  const TelaPrincipal({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-
-      // AppBar flutuante personalizada
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
-      floatingActionButton: Builder(
-        // Usar Builder aqui para obter o contexto certo do Scaffold
-        builder:
-            (context) => Container(
-              height: 50,
-              margin: const EdgeInsets.only(top: 5),
-              padding: const EdgeInsets.only(left: 10, right: 5),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    // ignore: deprecated_member_use
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.menu,
-                      size: 28,
-                      color: Colors.black87,
-                    ),
-                    onPressed: () => Scaffold.of(context).openDrawer(),
-                  ),
-                  const SizedBox(width: 5),
-                  Expanded(
-                    child: Center(
-                      //alignment: Alignment.center,
-                      child: Image.asset(
-                        'assets/image/imagem.png',
-                        height: 50,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-      ),
-
-      // Drawer lateral
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              //padding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 2.0),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Início'),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Configurações'),
-              onTap: () => Navigator.pop(context),
-            ),
-          ],
-        ),
-      ),
-
-      // Corpo principal
-      body: Center(
-        child: Text(
-          'Conteúdo principal da tela',
-          style: TextStyle(fontSize: 20, color: Colors.grey[800]),
         ),
       ),
     );
